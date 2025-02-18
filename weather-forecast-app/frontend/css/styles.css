@@ -1,0 +1,237 @@
+:root {
+    --bg-light: #F7F9FC;
+    --bg-dark: #121212;
+    --text-light: #333;
+    --text-dark: #FFF;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --gradient-light: linear-gradient(135deg, #89CFF0 0%, #C3B1E1 100%);
+    --gradient-dark: linear-gradient(135deg, #2A2A2A 0%, #404040 100%);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+    --glass-bg: rgba(18, 18, 18, 0.25);
+    --gradient: var(--gradient-dark);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--gradient-light);
+    color: var(--text-light);
+    min-height: 100vh;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-divider {
+    display: flex ;
+    justify-content: space-between;
+    gap: 1rem;
+    
+}
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.brand {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.location {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.search-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: inherit;
+}
+
+.current-weather {
+    margin-bottom: 1.5rem;
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.temperature {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* .forecast-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.forecast-tabs button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+} */
+
+.tab-active {
+    background: rgba(255, 255, 255, 0.3) !important;
+    font-weight: 500;
+}
+
+.hourly-forecast .forecast-items {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.forecast-item {
+    min-width: 100px;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.weather-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.metric {
+    padding: 1rem;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.sun-times {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .weather-metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* Add to styles.css */
+.main-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch;
+    position: relative;
+  }
+  
+  .main-content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .forecast-tabs-container {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+  }
+  
+  .forecast-tabs {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    height: fit-content;
+    /* position: sticky; */
+    top: 1rem;
+  }
+  
+  .forecast-tabs button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 1rem;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .forecast-tabs button:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .forecast-tabs .tab-active {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+  }
+  
+  .forecast-results {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    flex-grow: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .main-layout {
+      flex-direction: column;
+    }
+    
+    .forecast-tabs-container {
+      width: 100%;
+      order: -1;
+    }
+    
+    .forecast-tabs {
+      flex-direction: row;
+      overflow-x: auto;
+    }
+    
+    .forecast-tabs button {
+      white-space: nowrap;
+    }
+  }
