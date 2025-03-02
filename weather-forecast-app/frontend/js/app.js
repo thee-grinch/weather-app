@@ -7,7 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         body.setAttribute('data-theme', newTheme);
     });
+    // Fetch location data on document load
+    async function fetchLocationData() {
+      try {
+      // Get the user's location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        const response = await fetch(`/api/location/${latitude},${longitude}`);
+        const data = await response.json();
+        console.log('Location data:', data);
+        // Process the location data as needed
+        }, (error) => {
+        console.error('Error getting location:', error);
+        });
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+      } catch (error) {
+      console.error('Error fetching location data:', error);
+      }
+    }
 
+    // Call the function to fetch location data
+    fetchLocationData();
     // Forecast Tabs
     document.querySelectorAll('.forecast-tabs button').forEach(button => {
         button.addEventListener('click', () => {
@@ -67,3 +90,36 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     }
   });
+
+
+  // Login page scripts
+  // Authentication Toggle
+const loginBtn = document.getElementById('loginBtn');
+const signupBtn = document.getElementById('signupBtn');
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+
+loginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginBtn.classList.add('active');
+    signupBtn.classList.remove('active');
+    loginForm.classList.remove('hidden');
+    signupForm.classList.add('hidden');
+});
+
+signupBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    signupBtn.classList.add('active');
+    loginBtn.classList.remove('active');
+    signupForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+});
+
+// Form Submission Handling
+document.querySelectorAll('.auth-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Add your authentication logic here
+        console.log('Form submitted:', e.target.id);
+    });
+});

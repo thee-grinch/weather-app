@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkyCast</title>
-    <link rel="icon" href="static/image.png" type="image/png">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="/static/static/image.png" type="image/png">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div id="loading" class="loading-screen"> <img src="/static/static/load-35.gif" > </div>
+    <div id="container" class="container hidden">
         <header class="header">
             <div class="header-top">
                 <h1 class="brand">SkyCast</h1>
-                <div class="location"><i class="fas fa-map-marker-alt"></i> Khulna, Bangladesh</div>
+                <div id="location" class="location">Khulna, Bangladesh</div>
             </div>
             <div class="search-container">
                 <input type="text" placeholder="Search Location" class="search-input">
@@ -26,14 +27,14 @@
         <main class="main-content">
             <section class="current-weather glass">
                 <div class="weather-header">
-                    <span class="current-time">2:59PM</span>
+                    <span id="lastTimeUpdate" class="current-time">Last Updated Time: 2:59 PM</span>
                     <div class="unit-switch">°F <i class="fas fa-chevron-down"></i></div>
                 </div>
                 <div class="weather-main">
-                    <div class="temperature">12°</div>
+                    <div id="temperature" class="temperature">12°</div>
                     <div class="weather-details">
-                        <div class="feels-like">Feels Like 35°</div>
-                        <div class="condition">Rainy</div>
+                        <div id="feelsLike" class="feels-like">Feels Like 35°</div>
+                        <div id="conditionText" class="condition">Rainy</div>
                     </div>
                 </div>
             </section>
@@ -43,9 +44,10 @@
             <section class="hourly-forecast glass">
                 <div class="forecast-items">
                     <div class="forecast-item">
-                        <div class="time">1AM</div>
-                        <div class="condition-icon">☁️</div>
-                        <div class="temp">12°</div>
+                        <div id="forecastTime" class="time">1AM</div>
+                        <!-- <div id="forecastConditionIcon class="condition-icon">☁️</div> -->
+                        <img id="forecastConditionIcon" class="condition-icon" src="/static/static/icons/01d.png" alt="weather icon">
+                        <div id="forecastConditionTemp" class="temp">12°</div>
                         <div class="secondary-info">
                             <span>120km</span>
                             <span>59%</span>
@@ -58,23 +60,23 @@
             <section class="weather-metrics glass">
                 <div class="metric">
                     <h3>Air Quality</h3>
-                    <div class="value">156</div>
+                    <div id="airQuality" class="value">156</div>
                 </div>
                 <div class="metric">
                     <h3>Wind</h3>
-                    <div class="value">120 km/h</div>
+                    <div id="wind" class="value">120 km/h</div>
                 </div>
                 <div class="metric">
                     <h3>Humidity</h3>
-                    <div class="value">59%</div>
+                    <div id="humidity" class="value">59%</div>
                 </div>
                 <div class="metric">
                     <h3>Visibility</h3>
-                    <div class="value">3mi</div>
+                    <div id="visibility" class="value">3mi</div>
                 </div>
                 <div class="metric">
                     <h3>Pressure</h3>
-                    <div class="value">27.65in</div>
+                    <div id="pressure" class="value">27.65in</div>
                 </div>
             </section>
 
@@ -82,11 +84,11 @@
                 <h2 class="section-title">Sun & Moon Summary</h2>
                 <div class="sun-times">
                     <div class="sun-event">
-                        <div class="time">5:43AM</div>
+                        <div id="sunrise" class="time">5:43AM</div>
                         <div class="label">Sunrise</div>
                     </div>
                     <div class="sun-event">
-                        <div class="time">6:12PM</div>
+                        <div id="sunset" class="time">6:12PM</div>
                         <div class="label">Sunset</div>
                     </div>
                 </div>
@@ -97,12 +99,12 @@
               <button class="tab-active" data-period="today">Today</button>
               <button data-period="tomorrow">Tomorrow</button>
               <button data-period="10-days">10 Days</button>
-              <button data-period="monthly">Monthly Cast</button>
+              <!-- <button data-period="monthly">Monthly Cast</button> -->
             </div>
             <div class="forecast-results"></div>
           </div>
         </div>
     </div>
-    <script src="js/app.js"></script>
+    <script src="/static/js/app.js"></script>
 </body>
 </html>
